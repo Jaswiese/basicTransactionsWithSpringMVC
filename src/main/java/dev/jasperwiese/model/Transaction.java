@@ -2,12 +2,13 @@ package dev.jasperwiese.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
 public class Transaction {
     private UUID id;
-    private Integer amount;
+    private BigDecimal amount;
     private ZonedDateTime timestamp;
     private String reference;
     private String bankSlogan;
@@ -15,7 +16,7 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(UUID id, Integer amount, ZonedDateTime timestamp, String reference, String bankSlogan) {
+    public Transaction(UUID id, BigDecimal amount, ZonedDateTime timestamp, String reference, String bankSlogan) {
         this.id = id;
         this.amount = amount;
         this.timestamp = timestamp;
@@ -31,11 +32,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public Integer getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

@@ -4,6 +4,7 @@ import dev.jasperwiese.model.Transaction;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -24,7 +25,7 @@ public class TransactionService {
         return transactions;
     }
 
-    public Transaction create(Integer amount, String reference){
+    public Transaction create(BigDecimal amount, String reference){
         UUID userId = UUID.randomUUID();
         ZonedDateTime timeStamp = ZonedDateTime.now();
         Transaction transaction = new Transaction(userId,amount,timeStamp,reference, bankSlogan);
