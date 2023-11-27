@@ -9,15 +9,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @ComponentScan(basePackageClasses = ApplicationLauncher.class)
 @Configuration
 @PropertySource("classpath:/application.properties")
-public class TransactionApplicationConfiguration {
+@EnableWebMvc
+public class ApplicationConfiguration {
     @Bean
     public ObjectMapper objectMapper() {
         return new ObjectMapper().registerModule(new JavaTimeModule());
     }
+
+    @Bean
+    public MethodValidationPostProcessor methodValidationPostProcessor() {
+        return new MethodValidationPostProcessor();
+    }
+
     public TransactionService transactionService(@Value("${bank.slogan}") String bankSlogan) {
         return new TransactionService(bankSlogan);
     }
